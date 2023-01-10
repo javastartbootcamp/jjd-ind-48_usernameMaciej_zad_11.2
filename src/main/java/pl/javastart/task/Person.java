@@ -5,27 +5,12 @@ public class Person {
     private String lastName;
     private int age;
     private String pesel;
-    private int counter = 3;
+    private static final int LIMIT = 3;
 
     public Person(String firstName, String lastName, int age, String pesel) {
-        if (firstName == null) {
-            throw new NameUndefinedException("Imie nie moze byc nullem");
-        }
-        if (lastName == null) {
-            throw new NameUndefinedException("Nazwisko nie moze byc nullem");
-        }
-        if (age < 1) {
-            throw new IncorrectAgeException("Wiek nie moze byc liczba ujemna");
-        }
-        if (counter > firstName.length()) {
-            throw new NameUndefinedException("Imie musi miec wiecej niz 2 znaki");
-        }
-        if (counter > lastName.length()) {
-            throw new NameUndefinedException("Nazwisko musi miec wiecej niz 2 znaki");
-        }
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
+        setFirstName(firstName);
+        setLastName(lastName);
+        setAge(age);
         this.pesel = pesel;
     }
 
@@ -34,6 +19,9 @@ public class Person {
     }
 
     public void setFirstName(String firstName) {
+        if (LIMIT > firstName.length()) {
+            throw new NameUndefinedException("Imie musi miec wiecej niz 2 znaki");
+        }
         if (firstName == null) {
             throw new NameUndefinedException("Nie mozna przestawic imienia na wartosc null");
         }
@@ -45,6 +33,9 @@ public class Person {
     }
 
     public void setLastName(String lastName) {
+        if (LIMIT > lastName.length()) {
+            throw new NameUndefinedException("Nazwisko musi miec wiecej niz 2 znaki");
+        }
         if (lastName == null) {
             throw new NameUndefinedException("Nie mozna przestawic nazwiska na wartosc null");
         }
