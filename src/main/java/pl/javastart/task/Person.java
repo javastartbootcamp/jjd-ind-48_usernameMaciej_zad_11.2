@@ -8,18 +8,18 @@ public class Person {
     private int counter = 3;
 
     public Person(String firstName, String lastName, int age, String pesel) {
-            if (firstName == null) {
-                throw new NameUndefinedException("Imie nie moze byc nullem");
-            }
+        if (firstName == null) {
+            throw new NameUndefinedException("Imie nie moze byc nullem");
+        }
         if (lastName == null) {
             throw new NameUndefinedException("Nazwisko nie moze byc nullem");
         }
-            if (age < 1) {
-                throw new IncorrectAgeException("Wiek nie moze byc liczba ujemna");
-            }
-            if (counter > firstName.length()) {
-                throw new NameUndefinedException("Imie musi miec wiecej niz 2 znaki");
-            }
+        if (age < 1) {
+            throw new IncorrectAgeException("Wiek nie moze byc liczba ujemna");
+        }
+        if (counter > firstName.length()) {
+            throw new NameUndefinedException("Imie musi miec wiecej niz 2 znaki");
+        }
         if (counter > lastName.length()) {
             throw new NameUndefinedException("Nazwisko musi miec wiecej niz 2 znaki");
         }
